@@ -1,0 +1,45 @@
+{
+  "version": "1.0.0",
+  "description": "Default Aegis guardrail definitions.",
+  "rules": [
+    {
+      "name": "hard_cost_ceiling",
+      "type": "max_cost",
+      "description": "No single agent action may exceed $5.00 without human approval.",
+      "threshold": 5.0
+    },
+    {
+      "name": "block_destructive_intents",
+      "type": "blocked_intent",
+      "description": "Prevent agents from executing known-dangerous operations.",
+      "patterns": [
+        "drop\\s+database",
+        "rm\\s+-rf",
+        "transfer.*all.*funds",
+        "delete.*production"
+      ]
+    },
+    {
+      "name": "high_value_transactions_need_priority",
+      "type": "priority_floor",
+      "description": "On-chain transactions over a certain class require priority >= 7.",
+      "intent_pattern": "(transfer|swap|bridge|stake)",
+      "min_priority": 7
+    },
+    {
+      "name": "quarantined_agents",
+      "type": "agent_blocklist",
+      "description": "Agents that have been administratively suspended.",
+      "agents": []
+    },
+    {
+      "name": "kaizen_substitute_gemini-flash_3",
+      "type": "model_override",
+      "description": "Auto-optimised: Use claude-opus for logic_density=3 -> Use gemini-flash for logic_density=3",
+      "model": "gemini-flash",
+      "logic_density": 3,
+      "generated_by": "kaizen_engine",
+      "generated_at": "2026-03-29T05:38:49.620496+00:00"
+    }
+  ]
+}
