@@ -1,4 +1,6 @@
 <p align="center">
+  <img src="assets/aegis.png" alt="agent-management" width="100%" />
+</p><p align="center">
   <h1 align="center">Aegis</h1>
   <p align="center"><strong>The Industrial Standard for Agentic Governance</strong></p>
 </p>
